@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+
+	function addNewImage() {
+		
+		var form = document.getElementById("uploadImage");
+		if (form != null) {
+			form.reset();
+		}
+		
+	}
+
+	function onClickCheck() {
+		
+		var form = document.getElementById("uploadImage");
+		if (form != null) {
+			if(form.defFileName.checked == false) {
+				form.caption.value = "";				
+				form.altTag.value = "";
+			}
+		}		
+		
+	}
+		
+</script>
+<body>
+	<form id="uploadImage" name="uploadImage" action="http://localhost:9000/uploadImage" method="post"
+		enctype="multipart/form-data">
+		<table>
+			<tr>
+				<td>Image File</td>
+			</tr>
+			<tr>
+				<td><input type="file" name="file" accept="image/*" id="file">
+				</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="defFileName" id="defFileName" value="" onclick="onClickCheck();">
+					Default file name as atl_tag/caption</td>
+				<td>
+					<table>
+						<tr>
+							<td>caption</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" name="caption" id="caption" value="">
+							</td>
+						</tr>
+						<tr>
+							<td>alt tag</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" name="altTag" id="altTag" value="">
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="Add Another Image" onclick="addNewImage();">
+				</td>
+				<td>
+					<input type="submit" value="Upload">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
